@@ -1,0 +1,462 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+
+    --primary: 0 84% 60%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 84% 60%;
+
+    --radius: 0.75rem;
+
+    /* Sport theme colors - Clean modern style */
+    --sport-primary: 0 84% 60%;
+    --sport-secondary: 217 91% 60%;
+    --sport-background: 0 0% 100%;
+    --sport-surface: 0 0% 98%;
+    --sport-card: 0 0% 100%;
+    --sport-border: 0 0% 89.8%;
+    --sport-text: 0 0% 3.9%;
+    --sport-text-light: 0 0% 45.1%;
+    --sport-sidebar: 0 0% 96.1%;
+    --sport-dark: 0 0% 10%;
+    --sport-muted: 0 0% 45.1%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-sport-background text-sport-text;
+    font-family: "Inter", sans-serif;
+    color: hsl(var(--sport-text));
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeSpeed;
+  }
+
+  /* Global text visibility rules - Force proper colors */
+  * {
+    color: inherit;
+  }
+
+  /* Default text colors for light background */
+  body,
+  .bg-sport-background {
+    color: #111827 !important;
+  }
+
+  /* Headings should be dark and visible */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #111827 !important;
+    font-weight: 600;
+  }
+
+  /* Paragraphs and body text */
+  p,
+  span,
+  div:not(.bg-sport-card):not(.bg-sport-dark):not(.bg-gradient-to-br) {
+    color: #374151 !important;
+  }
+
+  /* Text utility classes with !important */
+  .text-gray-900 {
+    color: #111827 !important;
+  }
+
+  .text-gray-700 {
+    color: #374151 !important;
+  }
+
+  .text-gray-600 {
+    color: #4b5563 !important;
+  }
+
+  .text-white {
+    color: white !important;
+  }
+
+  .text-gray-300 {
+    color: rgb(209 213 219) !important;
+  }
+
+  /* Sport theme colors */
+  .text-sport-primary {
+    color: hsl(var(--sport-primary)) !important;
+  }
+
+  .text-sport-text {
+    color: #111827 !important;
+  }
+
+  .text-sport-text-light {
+    color: #6b7280 !important;
+  }
+
+  /* Dark card backgrounds */
+  .bg-sport-card,
+  .bg-sport-dark,
+  .bg-gradient-to-br {
+    color: white !important;
+  }
+
+  .bg-sport-card *,
+  .bg-sport-dark *,
+  .bg-gradient-to-br * {
+    color: inherit !important;
+  }
+
+  .bg-sport-card h1,
+  .bg-sport-card h2,
+  .bg-sport-card h3,
+  .bg-sport-dark h1,
+  .bg-sport-dark h2,
+  .bg-sport-dark h3,
+  .bg-gradient-to-br h1,
+  .bg-gradient-to-br h2,
+  .bg-gradient-to-br h3 {
+    color: white !important;
+  }
+
+  .bg-sport-card p,
+  .bg-sport-dark p,
+  .bg-gradient-to-br p {
+    color: rgb(209 213 219) !important;
+  }
+
+  /* Reduce animations on mobile devices */
+  @media (max-width: 768px) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  .match-card {
+    @apply bg-sport-card hover:bg-sport-surface border border-sport-border rounded-xl p-3;
+    transition: all 0.15s ease;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+  }
+
+  .live-indicator {
+    @apply px-2 py-0.5 text-xs font-semibold rounded-full bg-sport-primary text-white flex items-center gap-1;
+  }
+
+  .live-dot {
+    @apply w-2 h-2 bg-white rounded-full;
+    animation: pulse 2s infinite;
+  }
+
+  .section-title {
+    @apply text-lg md:text-xl font-semibold mb-4 text-sport-text;
+  }
+
+  .page-container {
+    @apply max-w-7xl mx-auto px-4 py-6 md:px-6 lg:px-8;
+  }
+
+  .club-logo {
+    @apply w-10 h-10 md:w-12 md:h-12 object-contain;
+  }
+
+  .mobile-nav-link {
+    @apply block px-3 py-2 rounded-md text-base font-medium text-sport-text hover:text-sport-primary hover:bg-sport-surface;
+  }
+
+  .mobile-nav-link.active {
+    @apply text-sport-primary bg-sport-primary/10;
+  }
+
+  /* Optimized scrollbar for mobile */
+  .custom-scrollbar::-webkit-scrollbar {
+    @apply w-1;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-sport-border rounded-full;
+  }
+
+  /* Default scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-1;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-sport-border rounded-full;
+  }
+
+  /* Simplified fade animation */
+  .animate-fade-in {
+    animation: fadeIn 0.2s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Simplified pulse animation */
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-sport-primary text-white rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sport-primary focus:ring-offset-2 focus:ring-offset-sport-background;
+    transition: background-color 0.15s ease;
+  }
+
+  .btn-primary:hover {
+    @apply bg-sport-secondary;
+  }
+
+  .btn-secondary {
+    @apply bg-sport-surface text-sport-text rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sport-border focus:ring-offset-2 focus:ring-offset-sport-background;
+    transition: background-color 0.15s ease;
+  }
+
+  .btn-secondary:hover {
+    @apply bg-sport-border;
+  }
+
+  .nav-link {
+    @apply text-sport-text-light relative px-3 py-2 rounded-md text-sm font-medium;
+    transition: color 0.15s ease;
+  }
+
+  .nav-link:hover {
+    @apply text-sport-primary bg-sport-surface;
+  }
+
+  .nav-link.active {
+    @apply text-sport-primary bg-sport-primary/10;
+  }
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  .match-card {
+    @apply p-3;
+  }
+
+  .club-logo {
+    @apply w-8 h-8;
+  }
+
+  .page-container {
+    @apply px-3 py-4;
+  }
+
+  .section-title {
+    @apply text-lg;
+  }
+
+  /* Mobile header centering */
+  .mobile-header {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+    width: 100%;
+  }
+
+  .mobile-header .logo-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mobile-header .mobile-menu-left {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .mobile-header .mobile-lang-right {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+/* Mobile header adjustments */
+.mobile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobile-menu-left {
+  flex: 0 0 auto;
+  order: 1;
+}
+
+.logo-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  order: 2;
+}
+
+.mobile-lang-right {
+  flex: 0 0 auto;
+  order: 3;
+}
+
+/* Logo responsive styles */
+@media (max-width: 640px) {
+  .logo-center img {
+    max-width: 140px;
+    height: 28px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .logo-center img {
+    max-width: 160px;
+    height: 32px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .logo-center img {
+    max-width: 180px;
+    height: 36px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .logo-center img {
+    max-width: 200px;
+    height: 40px;
+  }
+}
+
+/* Logo hover effect */
+.logo-center a:hover img {
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Disable hover effects on touch devices */
+@media (hover: none) {
+  .match-card:hover,
+  .btn-primary:hover,
+  .btn-secondary:hover,
+  .nav-link:hover {
+    background-color: inherit;
+    color: inherit;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4b5563;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Twitter embed responsive styles */
+.twitter-embed-container {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.twitter-timeline {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* Mobile responsive adjustments for Twitter embed */
+@media (max-width: 768px) {
+  .twitter-embed-container {
+    margin: 0 -0.5rem;
+  }
+
+  .twitter-timeline {
+    border-radius: 0 !important;
+  }
+}
