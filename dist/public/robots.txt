@@ -1,0 +1,26 @@
+
+User-agent: *
+Allow: /
+
+Sitemap: https://kikasports.com/sitemap.xml
+
+# Allow indexing of main pages
+Allow: /
+Allow: /live
+Allow: /live-score
+Allow: /schedule
+Allow: /competitions
+Allow: /about
+Allow: /match/
+Allow: /totalsportek
+Allow: /hesgoal
+Allow: /streameast
+Allow: /kora-live
+Allow: /yalla-shoot
+Allow: /score808
+
+# Block unnecessary files
+Disallow: /api/
+Disallow: /*.json
+Disallow: /src/
+Disallow: /node_modules/
