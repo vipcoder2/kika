@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(240, 10%, 3.9%);
+  --muted: hsl(210, 40%, 96%);
+  --muted-foreground: hsl(215.4, 16.3%, 46.9%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(240, 10%, 3.9%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(240, 10%, 3.9%);
+  --border: hsl(214.3, 31.8%, 91.4%);
+  --input: hsl(214.3, 31.8%, 91.4%);
+  --primary: hsl(210, 40%, 24%);
+  --primary-foreground: hsl(0, 0%, 98%);
+  --secondary: hsl(26, 90%, 54%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(210, 40%, 96%);
+  --accent-foreground: hsl(215.4, 16.3%, 46.9%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(215.4, 16.3%, 46.9%);
+  --radius: 0.75rem;
+  --success: hsl(142.1, 76.2%, 36.3%);
+  --warning: hsl(38, 92%, 50%);
+  --danger: hsl(0, 84.2%, 60.2%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(0, 0%, 98%);
+  --primary-foreground: hsl(240, 5.9%, 10%);
+  --secondary: hsl(26, 90%, 54%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-primary {
+    color: hsl(210, 40%, 24%);
+  }
+  
+  .text-secondary {
+    color: hsl(26, 90%, 54%);
+  }
+  
+  .text-success {
+    color: hsl(142.1, 76.2%, 36.3%);
+  }
+  
+  .text-warning {
+    color: hsl(38, 92%, 50%);
+  }
+  
+  .text-danger {
+    color: hsl(0, 84.2%, 60.2%);
+  }
+  
+  .bg-primary {
+    background-color: hsl(210, 40%, 24%);
+  }
+  
+  .bg-secondary {
+    background-color: hsl(26, 90%, 54%);
+  }
+  
+  .bg-success {
+    background-color: hsl(142.1, 76.2%, 36.3%);
+  }
+  
+  .bg-warning {
+    background-color: hsl(38, 92%, 50%);
+  }
+  
+  .bg-danger {
+    background-color: hsl(0, 84.2%, 60.2%);
+  }
+  
+  .hover\:bg-orange-50:hover {
+    background-color: hsl(25, 100%, 97%);
+  }
+  
+  .hover\:bg-orange-600:hover {
+    background-color: hsl(20.5, 90.2%, 48.2%);
+  }
+  
+  .hover\:text-secondary:hover {
+    color: hsl(26, 90%, 54%);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(210, 40%, 96%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(215.4, 16.3%, 46.9%);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(210, 40%, 24%);
+}
+
+/* Animation classes */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .sidebar-hidden {
+    transform: translateX(-100%);
+  }
+  
+  .sidebar-visible {
+    transform: translateX(0);
+  }
+}
